@@ -8,7 +8,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                echo 'packaging app'
+                echo 'building app'
                 sh "pwd"
                 sh "ls"
                 sh "zip -r webapp.zip ."
@@ -24,12 +24,10 @@ pipeline {
                     sh '$CONNECT "sudo apt install zip -y"'
                     sh '$CONNECT "sudo rm -rf /var/www/html/"'
                     sh '$CONNECT "sudo mkdir /var/www/html/"'
-                    // sh '$CONNECT "unzip /home/ubuntu/webapp.zip -d /home/ubuntu/app"'
                     sh '$CONNECT "sudo unzip webapp.zip -d /var/www/html/"'
                 }
             }
         }
-
 
         stage('Clean-Up') {
             steps {
